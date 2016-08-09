@@ -32,3 +32,9 @@ No need clone repository. You can use this method from anywhere.
 ```
   docker run -it --rm baden/phoenix
 ```
+
+## Run with user privilegies:
+
+```
+docker run -it --rm -e USER_ID=`id -u` -e GROUP_ID=`id -g` -v `pwd`:/home/composer/code -w /home/composer/code baden/phoenix
+```

@@ -9,6 +9,13 @@ RUN mkdir /node && \
 
 ENV PATH /node/node-v4.4.7-linux-x64/bin/:${PATH}
 
+ENV DEBIAN_FRONTEND="noninteractive"
+
+RUN apt-get update -qq && \
+    apt-get install -y inotify-tools && \
+    apt-get -qq clean
+
+
 RUN mkdir /app
 WORKDIR /app
 
