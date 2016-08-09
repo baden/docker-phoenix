@@ -16,6 +16,13 @@ RUN mix local.hex --force && \
     mix local.rebar --force && \
     mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
 
+# Install some for user composer
+
+RUN USER_ID=1000 GROUP_ID=1000 /entrypoint.sh true && \
+    runuser -u composer -- mix local.hex --force && \
+    runuser -u composer -- mix local.rebar --force && \
+    runuser -u composer -- mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
+
 
 ARG PORT=4000
 ENV PORT=${PORT}
